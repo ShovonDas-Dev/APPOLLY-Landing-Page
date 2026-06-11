@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --font-my-font: "Josefin Sans", sans-serif;
+  --color-primary: #5956E9;
+  --color-black: #232233;
+  --color-gray: #6C6C72;
+}
