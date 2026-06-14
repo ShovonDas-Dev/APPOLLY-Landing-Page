@@ -6,3 +6,7 @@
   --color-black: #232233;
   --color-gray: #6C6C72;
 }
+
+html {
+  scroll-behavior: smooth;
+}

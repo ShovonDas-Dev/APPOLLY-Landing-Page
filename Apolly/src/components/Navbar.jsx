@@ -1,6 +1,14 @@
 import { useState } from "react";
+import { TiSocialFacebook, TiSocialInstagram, TiSocialLinkedin, TiSocialTwitter, TiSocialYoutube } from "react-icons/ti";
 
-const NAV_LINKS = ["HOME", "ABOUT", "FEATURES", "SCREENSHOT", "BLOG"];
+
+const NAV_LINKS = [
+  { name: "HOME", href: "#HomePage" },
+  { name: "ABOUT", href: "#about" },
+  { name: "FEATURES", href: "#features" },
+  { name: "SCREENSHOT", href: "#screenshot" },
+  { name: "BLOG", href: "#blog" },
+];
 import logo from "../image/logo.png";
 
 
@@ -24,7 +32,7 @@ export default function Navbar() {
     <div className="w-full font-my-font">
 
       {/* Top bar — desktop only */}
-      <div className="hidden md:flex bg-[#5c52d5] text-white text-xs px-6 py-1.5 justify-between items-center">
+      <div className="hidden md:flex  text-white text-xs px-6 py-1.5 justify-between items-center">
         <div className="flex gap-5 items-center ">
           <a href="#" className="flex items-center gap-1 text-white no-underline">
             <span>✉</span> info@youremail.com
@@ -34,10 +42,10 @@ export default function Navbar() {
           </a>
         </div>
         <div className="flex gap-3 items-center text-sm">
-          <a href="#" className="text-white no-underline">f</a>
-          <a href="#" className="text-white no-underline">ig</a>
-          <a href="#" className="text-white no-underline">tw</a>
-          <a href="#" className="text-white no-underline">yt</a>
+          <a href="#" className="text-white no-underline"><TiSocialFacebook /></a>
+          <a href="#" className="text-white no-underline"><TiSocialLinkedin /></a>
+          <a href="#" className="text-white no-underline"><TiSocialTwitter /></a>
+          <a href="#" className="text-white no-underline"><TiSocialYoutube /></a>
         </div>
       </div>
 
@@ -124,7 +132,7 @@ export default function Navbar() {
             <ul className="list-none m-0 px-7">
               {NAV_LINKS.map((link, i) => (
                 <li
-                  key={link}
+                  key={link.name}
                   className={`py-3.5 ${i < NAV_LINKS.length - 1 ? "border-b border-gray-100" : ""}`}
                 >
                   <a
@@ -134,7 +142,7 @@ export default function Navbar() {
                       active === link ? "text-primary" : "text-gray-800 hover:text-primary"
                     }`}
                   >
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}

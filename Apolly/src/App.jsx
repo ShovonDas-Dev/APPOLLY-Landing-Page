@@ -4,7 +4,9 @@ import HomePage from './pages/HomePage'
 const App = () => {
   return (
     <>
-      <HomePage/>
+     <section id="home">
+          <HomePage />
+      </section>
     </>
   )
 }
