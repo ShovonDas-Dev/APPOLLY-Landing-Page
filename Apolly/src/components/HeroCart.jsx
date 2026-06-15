@@ -25,7 +25,11 @@ export default function HeroCard() {
       
 
       {/* Content Box */}
-      <div className="relative z-10 bg-white m-3 md:m-auto px-4 py-10 font-my-font shadow-xl w-[300px]  md:w-[450px] rounded-lg">
+      <motion.div 
+      initial={{ opacity: 0, y: 20 }}  
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.6 }}
+      className="relative z-10 bg-white m-3 md:m-auto px-4 py-10 font-my-font shadow-xl w-[300px]  md:w-[450px] rounded-lg">
         <h2 className="text-3xl md:text-4xl font-bold text-primary leading-tight ">
           A GREAT APP MAKES YOUR LIFE EASIER
         </h2>
@@ -45,7 +49,7 @@ export default function HeroCard() {
          </div>
         </div>
         
-      </div>
+      </motion.div>
     </div>
   );
 }

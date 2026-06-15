@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { TiSocialFacebook, TiSocialInstagram, TiSocialLinkedin, TiSocialTwitter, TiSocialYoutube } from "react-icons/ti";
-
+import { TiSocialFacebook, TiSocialLinkedin, TiSocialTwitter, TiSocialYoutube } from "react-icons/ti";
+import { motion } from "framer-motion";
 
 const NAV_LINKS = [
   { name: "HOME", href: "#HomePage" },
@@ -32,32 +32,44 @@ export default function Navbar() {
     <div className="w-full font-my-font">
 
       {/* Top bar — desktop only */}
-      <div className="hidden md:flex  text-white text-xs px-6 py-1.5 justify-between items-center">
-        <div className="flex gap-5 items-center ">
-          <a href="#" className="flex items-center gap-1 text-white no-underline">
+      <div className="hidden md:flex  text-white text-xs px-6 py-2 justify-between items-center">
+        <motion.div 
+        initial={{ opacity: 0, x: -20 }}  
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="flex gap-5 items-center ">
+          <a href="#" className="flex items-center text-sm gap-1 text-white no-underline">
             <span>✉</span> info@youremail.com
           </a>
-          <a href="#" className="flex items-center gap-1 text-white no-underline">
+          <a href="#" className="flex items-center text-sm gap-1 text-white no-underline">
             <span>📞</span> (480) 555-0103
           </a>
-        </div>
-        <div className="flex gap-3 items-center text-sm">
-          <a href="#" className="text-white no-underline"><TiSocialFacebook /></a>
-          <a href="#" className="text-white no-underline"><TiSocialLinkedin /></a>
-          <a href="#" className="text-white no-underline"><TiSocialTwitter /></a>
-          <a href="#" className="text-white no-underline"><TiSocialYoutube /></a>
-        </div>
+        </motion.div>
+        <motion.div 
+        initial={{ opacity: 0, x: 20 }}  
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="flex gap-3 items-center  text-sm">
+          <a href="#" className="text-white text-xl no-underline"><TiSocialFacebook /></a>
+          <a href="#" className="text-white text-xl no-underline"><TiSocialLinkedin /></a>
+          <a href="#" className="text-white text-xl no-underline"><TiSocialTwitter /></a>
+          <a href="#" className="text-white text-xl no-underline"><TiSocialYoutube /></a>
+        </motion.div>
       </div>
 
       {/* Desktop main nav */}
-      <nav className="hidden md:flex items-center justify-between bg-white border-b border-gray-100 px-6 h-12">
+      <motion.nav 
+      initial={{ opacity: 0, y: -20 }}  
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
+      className="hidden md:flex items-center justify-between bg-white border-b border-gray-100 px-6 h-12">
         <ul className="flex items-center gap-7 list-none m-0 p-0">
           {["HOME", "ABOUT", "FEATURES"].map((link) => (
             <li key={link}>
               <a
                 href="#"
                 onClick={() => setActive(link)}
-                className={`no-underline text-xs font-bold uppercase tracking-widest transition-colors pb-0.5 ${
+                className={`no-underline text-xs md:text-sm  font-bold uppercase tracking-widest transition-colors pb-0.5 ${
                   active === link
                     ? "text-[#5c52d5] border-b-2 border-[#5c52d5]"
                     : "text-gray-700 hover:text-[#5c52d5]"
@@ -70,7 +82,11 @@ export default function Navbar() {
         </ul>
 
         
-        <img src={logo} alt="Apolly Logo" className=" w-40 relative px-4 py-5.5 bg-white  "   />
+        <motion.img 
+        initial={{opacity: 0, scale: 0.7 }}  
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 1 }}
+        src={logo} alt="Apolly Logo" className=" w-40 relative px-4 py-5.5 bg-white  "   />
         
 
         <div className="flex items-center gap-7">
@@ -80,7 +96,7 @@ export default function Navbar() {
                 <a
                   href="#"
                   onClick={() => setActive(link)}
-                  className={`no-underline text-xs font-bold uppercase tracking-widest transition-colors pb-0.5 ${
+                  className={`no-underline text-xs md:text-sm  font-bold uppercase tracking-widest transition-colors pb-0.5 ${
                     active === link
                       ? "text-[#5c52d5] border-b-2 border-[#5c52d5]"
                       : "text-gray-700 hover:text-[#5c52d5]"
@@ -93,7 +109,7 @@ export default function Navbar() {
           </ul>
           <DownloadBtn />
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile / Tablet nav */}
       <div className="md:hidden py-4" >

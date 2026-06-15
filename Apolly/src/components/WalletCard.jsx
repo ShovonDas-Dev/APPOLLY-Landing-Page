@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+
 import { ChevronLeft, Search } from "lucide-react";
 
 // 5 avatars placed around the circle (top, right, bottom-right, bottom-left, left)
@@ -19,7 +20,7 @@ export default function WalletCard() {
       initial={{ opacity: 0, y: 24, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="w-[280px] mx-auto rounded-[2.5rem] bg-white p-5 shadow-2xl font-sans"
+      className="w-[310px] mx-auto rounded-[2.5rem] bg-white p-5 shadow-2xl font-sans"
     >
       {/* Top bar */}
       <div className="flex items-center justify-between mb-6">
@@ -85,7 +86,7 @@ export default function WalletCard() {
         <motion.div
           animate={{ scale: [1, 1.04, 1] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute w-56 h-56 rounded-full bg-indigo-50"
+          className="absolute w-60 h-60 rounded-full bg-indigo-50"
         />
         {/* Mid ring */}
         <div className="absolute w-44 h-44 rounded-full bg-indigo-100" />
@@ -93,17 +94,17 @@ export default function WalletCard() {
         {/* Rotating container for outer avatars */}
         <motion.div
           className="absolute w-56 h-56"
-          animate={{ rotate: 360 }}
+          animate={{ rotate: -360 }}
           transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
         >
-          {avatars.map((a, i) => (
+          {avatars.map((a,i) => (
             <motion.div
               key={a.id}
               className={`absolute ${a.style}`}
               animate={{ rotate: -360 }}
               transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             >
-              <motion.img
+              <motion.img 
                 src={a.src}
                 alt=""
                 initial={{ opacity: 0, scale: 0 }}
