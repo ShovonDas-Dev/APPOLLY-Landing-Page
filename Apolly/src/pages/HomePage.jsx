@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from '../components/Navbar';
 import HeroBg from "../image/HeroBG.png";
-import HeroCard from '../components/HeroCart';
+
+import HeroSection from '../components/HeroSection';
 const HomePage = () => {
   return (
     <>
@@ -13,12 +14,15 @@ const HomePage = () => {
           backgroundRepeat: "no-repeat",
         }}
         >
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
+            <div >
                 <Navbar/>
             </div>
             <div>
-              <HeroCard/>
+              <HeroSection/>
             </div>
+          </div>
+            
         </div>
 
         
