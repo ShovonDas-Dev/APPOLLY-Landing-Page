@@ -9,7 +9,7 @@ const HeroSection = () => {
       <div className="px-4 py-2 md:py-8 font-my-font">
         <HeroCart/>
       </div>
-      <div>
+      <div >
         <WalletCard/>
       </div >
     </div>
