@@ -2,6 +2,7 @@ import React from 'react'
 import SectionHeader from './SectionHeader'
 import featuresData from '../data/featuresData'
 import Animation from "../components/AnimatedFinanceMockup"
+import Something from "../components/p/something"
 
 const Appfeatures = () => {
     console.log(featuresData)
@@ -16,6 +17,10 @@ const Appfeatures = () => {
         titleClassName='text-white'
          />
       <Animation/>
+
+      {/* <div className='py-10'>
+        <Something/>
+      </div> */}
     </div>
   )
 }

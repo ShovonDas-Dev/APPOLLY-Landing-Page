@@ -67,7 +67,7 @@ export default function Navbar() {
           {["HOME", "ABOUT", "FEATURES"].map((link) => (
             <li key={link}>
               <a
-                href="#"
+                href={link}
                 onClick={() => setActive(link)}
                 className={`no-underline text-xs md:text-sm  font-bold uppercase tracking-widest transition-colors pb-0.5 ${
                   active === link
@@ -152,7 +152,7 @@ export default function Navbar() {
                   className={`py-3.5 ${i < NAV_LINKS.length - 1 ? "border-b border-gray-100" : ""}`}
                 >
                   <a
-                    href="#"
+                    href={link.href}
                     onClick={() => { setActive(link); setMenuOpen(false); }}
                     className={`no-underline text-sm font-bold uppercase tracking-widest ${
                       active === link ? "text-primary" : "text-gray-800 hover:text-primary"

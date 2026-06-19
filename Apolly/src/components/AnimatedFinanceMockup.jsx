@@ -78,7 +78,7 @@ function MonthBar({ colors, delay }) {
       className="flex flex-col gap-[3px] items-center"
       style={{ originY: 1 }} // grow from the bottom, not the top
       initial={{ scaleY: 0 }}
-      animate={{ scaleY: 1 }}
+      whileInView={{ scaleY: 1 }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
     >
       {colors.map((colorClass, i) => (
@@ -114,15 +114,17 @@ function CircularProgress({ percent, delay }) {
           fill="none"
           style={{ rotate: -90, transformOrigin: "50% 50%" }} // start from the top
           initial={{ pathLength: 0 }}
-          animate={{ pathLength: percent / 100 }}
+          whileInView={{ pathLength: percent / 100 }}
           transition={{ duration: 1.2, delay, ease: "easeOut" }}
         />
       </svg>
 
       {/* percentage number in the middle of the circle */}
-      <div className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-gray-800">
+      <motion.div 
+      initial={{}}
+      className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-gray-800">
         <AnimatedNumber value={percent} decimals={0} delay={delay} /> %
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -134,7 +136,7 @@ function ExpenseRow({ percent, title, subtitle, amount, delay }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5 }}
       className="flex items-center justify-between py-3 border-b border-gray-100 last:border-0"
     >
@@ -167,36 +169,37 @@ const EXPENSES = [
 // ---------------------------------------------
 export default function AnimatedFinanceMockup() {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-8">
+    <div className="  flex items-center justify-center p-8">
       {/* phone frame */}
-      <div className="relative w-[375px] rounded-[2.6rem] bg-black p-2 shadow-2xl">
+      <div className="relative w-[375px] rounded-[2.5rem] p-2 shadow-sm">
         <div className="rounded-[2.3rem] overflow-hidden bg-black">
 
           {/* purple header with balance */}
-          <div className="relative bg-gradient-to-br from-[#6d5ce8] to-[#a78bfa] px-6 pt-9 pb-16">
+          <div className="relative flex flex-col   bg-gradient-to-br from-[#6d5ce8] to-[#a78bfa] px-6 pt-9 ">
             <p className="text-white/70 text-[11px] font-semibold tracking-[0.2em]">INCOME</p>
             <h1 className="text-white text-4xl font-bold mt-2">
               <AnimatedNumber value={567} prefix="$" decimals={2} />
             </h1>
-          </div>
-
-          {/* 4 white action buttons, floating between sections */}
-          <div className="relative -mt-9 px-6 flex gap-2">
+          <div className=" flex py-6  gap-2">
             {["SEND", "CHANGE", "PAY", "BORROW"].map((label, i) => (
               <motion.button
                 key={label}
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45 + i * 0.08, duration: 0.4 }}
-                className="bg-white rounded-2xl px-4 py-3 text-[10px] font-bold text-gray-700 tracking-wide shadow-lg flex-1"
+                className="bg-white rounded-2xl px-4 py-3 text-[10px] font-bold text-gray-700  shadow-lg flex-1"
               >
                 {label}
               </motion.button>
             ))}
           </div>
+          </div>
+
+          {/* 4 white action buttons, floating between sections */}
+
 
           {/* income card with bar chart */}
-          <div className="bg-white rounded-t-[2rem] -mt-2 relative z-10 px-6 pt-9 pb-4">
+          <div className="bg-white   relative z-10 px-6 pt-9 pb-4">
             <p className="text-gray-400 text-[11px] font-semibold tracking-[0.2em]">INCOME</p>
             <h2 className="text-3xl font-bold text-gray-900 mt-1">
               <AnimatedNumber value={1567} prefix="$" decimals={2} delay={0.3} />
@@ -208,6 +211,7 @@ export default function AnimatedFinanceMockup() {
                   <MonthBar colors={BAR_PATTERNS[i]} delay={0.3 + i * 0.05} />
                   <span className="text-[9px] text-gray-400 font-medium">{month}</span>
                 </div>
+                
               ))}
             </div>
           </div>
