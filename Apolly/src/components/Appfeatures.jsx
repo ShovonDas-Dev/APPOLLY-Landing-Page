@@ -1,11 +1,13 @@
-import React from 'react'
+
 import SectionHeader from './SectionHeader'
 import featuresData from '../data/featuresData'
 import Animation from "../components/AnimatedFinanceMockup"
-import Something from "../components/p/something"
+import { FerrisWheel } from 'lucide-react'
+
 
 const Appfeatures = () => {
-    console.log(featuresData)
+    const fristFeature = featuresData[0]
+    console.log(fristFeature)
   return (
     
     <div>
@@ -16,11 +18,64 @@ const Appfeatures = () => {
         subtitleClassName='text-white'
         titleClassName='text-white'
          />
-      <Animation/>
 
-      {/* <div className='py-10'>
-        <Something/>
-      </div> */}
+        <div className='py-20'>
+          {/* 1st card */}
+          <div className='flex justify-center md:pb-10'>
+            <div className='flex flex-col gap-2 items-center font-my-font '  >
+              <img src={fristFeature.icon} alt=""  className='w-10 md:w-12'/>
+              <h2 className='text-white text-xl uppercase font-semibold'>{fristFeature.title}</h2>
+              <p className='text-white pt-2 text-center'>{fristFeature.description}</p>
+            </div>
+          </div>
+
+          {/* Middle part */}
+
+          <div className='flex flex-col md:flex-row items-center justify-center'>
+
+            {/* animated left side */}
+
+          <div className='flex flex-col justify-around px-10 '>
+            {[featuresData[1],featuresData[2]].map((d) => (
+              <div key={d.id} className='flex flex-col py-10 md:py-30 gap-2 items-center md:items-end font-my-font '  >
+                <img src={d.icon} alt=""  className='w-10   md:w-12'/>
+                <h2 className='text-white text-xl pt-2 uppercase font-semibold'>{d.title}</h2>
+                <p className='text-white pt-2 '>{d.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className=''> 
+            <Animation/>
+          </div>
+
+          {/* animated right side */}
+
+          <div className='flex flex-col justify-around px-10 '>
+            {[featuresData[3],featuresData[4]].map((d) => (
+              <div key={d.id} className='flex flex-col py-10 md:py-30 gap-2 items-center md:items-start  font-my-font '  >
+                <img src={d.icon} alt=""  className='w-10 md:w-10'/>
+                <h2 className='text-white text-xl pt-2 uppercase font-semibold'>{d.title}</h2>
+                <p className='text-white pt-2 text-center'>{d.description}</p>
+              </div>
+            ))}
+          </div>
+
+            </div>
+         
+
+          {/*Last card */}
+          <div className='flex justify-center px-10 md:pt-10'>
+            <div className='flex flex-col gap-2 items-center font-my-font'  >
+              <img src={featuresData[5].icon} alt=""  className='w-10 md:w-10'/>
+              <h2 className='text-white text-xl uppercase font-semibold'>{featuresData[5].title}</h2>
+              <p className='text-white pt-2 text-center'>{featuresData[5].description}</p>
+            </div>
+          </div>
+
+        </div>
+
+
     </div>
   )
 }

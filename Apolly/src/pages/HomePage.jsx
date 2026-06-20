@@ -33,7 +33,7 @@ const HomePage = () => {
         </section>
 
         {/* App features */}
-        <section className=" bg- bg-cover min-h-screen"
+        <section className=" bg- bg-cover "
               style={{
                 backgroundImage: `url(${HeroBg})`,
                 backgroundPosition: "center",

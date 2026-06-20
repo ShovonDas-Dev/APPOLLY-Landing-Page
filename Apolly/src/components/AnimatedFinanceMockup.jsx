@@ -169,7 +169,7 @@ const EXPENSES = [
 // ---------------------------------------------
 export default function AnimatedFinanceMockup() {
   return (
-    <div className="  flex items-center justify-center p-8">
+    <div className="  flex items-center justify-center">
       {/* phone frame */}
       <div className="relative w-[375px] rounded-[2.5rem] p-2 shadow-sm">
         <div className="rounded-[2.3rem] overflow-hidden bg-black">
