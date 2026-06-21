@@ -4,7 +4,7 @@ import FinanceSlider from './FinanceSlider'
 
 const AppInterface = () => {
   return (
-    <div className='py-20 flex flex-col' >
+    <div className='py-20 flex flex-col max-w-7xl mx-auto' >
         {/* Header section */}
         <div>
             <SectionHeader

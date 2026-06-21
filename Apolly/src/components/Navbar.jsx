@@ -83,7 +83,7 @@ export default function Navbar() {
 
         
         <motion.img 
-        initial={{opacity: 0, scale: 0.7 }}  
+        initial={{opacity: 1, scale: 0.7 }}  
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 1 }}
         src={logo} alt="Apolly Logo" className=" w-40 relative px-4 py-5.5 bg-white  "   />

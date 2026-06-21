@@ -27,24 +27,24 @@ import Mockup5 from "../../image/Mockup/Mockup5.png"
 // Step 1: 5 ta slide. Image gulo public/images folder theke load hobe.
 const slides = [
   { id: 1, image: Mockup1, alt: "Income overview with send, change, pay, borrow options" },
-  { id: 2, image: Mockup2, alt: "Visa card with balance and money spent" },
-  { id: 3, image: Mockup3, alt: "Yearly statistics with money spent chart" },
-  { id: 4, image: Mockup4, alt: "Income and expenses summary" },
-  { id: 5, image: Mockup5, alt: "Expenses breakdown by category" },
+  { id: 2, image: Mockup4, alt: "Visa card with balance and money spent" },
+  { id: 3, image: Mockup2, alt: "Yearly statistics with money spent chart" },
+  { id: 4, image: Mockup5, alt: "Income and expenses summary" },
+  { id: 5, image: Mockup3, alt: "Expenses breakdown by category" },
 ];
 
 export default function FinanceSlider() {
-  console.log(slides)
+
   // ekhon kon slide ta center e (active) ase
   const [activeIndex, setActiveIndex] = useState(0);
   // direction: 1 = right dik e jacche, -1 = left dik e jacche
   const [direction, setDirection] = useState(1);
 
   // circular index ber kora (last theke abar first e fire ashe)
-  const getIndex = (index) => (index + slides.length) % slides.length;
+    const getIndex = (index) => (index + slides.length) % slides.length;
 
   const prevIndex = getIndex(activeIndex - 1);
-  const nextIndex = getIndex(activeIndex + 1);
+  const nextIndex = getIndex(activeIndex + 1);  
 
   const goToNext = useCallback(() => {
     setDirection(1);
@@ -70,17 +70,17 @@ export default function FinanceSlider() {
   }, [goToNext]);
 
   return (
-    <div className="w-full min-h-screen bg-[#f4f5fa] flex items-center justify-center px-4 py-10 sm:py-16">
-      <div className="relative w-full max-w-5xl">
+    <div className="w-full min-h-screen  flex items-center justify-center px-4  sm:py-16">
+      <div className="relative w-full ">
         {/* ====================================================
             SLIDER STAGE
             mobile: shudhu center phone dekhabe
             sm/md/lg: left+center+right tin ta dekhabe
         ===================================================== */}
-        <div className="relative flex items-center justify-center h-[380px] sm:h-[420px] md:h-[460px]">
+        <div className="relative flex items-center justify-center max-w-3xl mx-auto h-[380px] sm:h-[420px] md:h-[460px]">
           {/* ---- LEFT preview (faded screenshot, no phone frame) ---- */}
           <button
-            onClick={goToPrev}
+            
             aria-label="Previous slide preview"
             className="hidden sm:block absolute left-0 md:left-6 lg:left-10 z-0
                        w-[120px] md:w-[150px] lg:w-[170px]
@@ -97,7 +97,7 @@ export default function FinanceSlider() {
 
           {/* ---- RIGHT preview (faded screenshot, no phone frame) ---- */}
           <button
-            onClick={goToNext}
+           
             aria-label="Next slide preview"
             className="hidden sm:block absolute right-0 md:right-6 lg:right-10 z-0
                        w-[120px] md:w-[150px] lg:w-[170px]
@@ -113,18 +113,18 @@ export default function FinanceSlider() {
           </button>
 
           {/* ---- CENTER active slide, wrapped in a phone bezel ---- */}
-          <AnimatePresence initial={false} custom={direction} mode="wait">
+          <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
               key={slides[activeIndex].id}
               custom={direction}
-              initial={{ x: direction > 0 ? 100 : -100, opacity: 0, scale: 0.92 }}
+              initial={{ x: direction > 0 ? 100 : -100, opacity: 0, scale: 0.2 }}
               animate={{ x: 0, opacity: 1, scale: 1 }}
               exit={{ x: direction > 0 ? -100 : 100, opacity: 0, scale: 0.92 }}
-              transition={{ duration: 0.45, ease: "easeInOut" }}
+              transition={{ duration: 0.5 , ease: "easeInOut" }}
               className="relative z-10"
             >
               {/* Phone bezel wrapper -- shudhu center slide er jonno */}
-              <div className="relative w-[200px] sm:w-[220px] md:w-[240px] lg:w-[260px] p-2 bg-black rounded-[2.2rem] shadow-2xl">
+              <div className="relative w-[200px] sm:w-[220px] p-[5px] bg-black rounded-[2.2rem] shadow-2xl">
                 {/* speaker notch */}
                 <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-3 bg-black rounded-full z-20 flex items-center justify-center">
                   <span className="w-1.5 h-1.5 bg-gray-700 rounded-full" />
@@ -162,7 +162,7 @@ export default function FinanceSlider() {
           aria-label="Next slide"
           className="absolute right-2 sm:right-4 md:right-0 top-1/2 -translate-y-1/2 z-20
                      w-11 h-11 sm:w-14 sm:h-14 rounded-full
-                     bg-indigo-600 shadow-lg flex items-center justify-center
+                     bg-primary shadow-lg flex items-center justify-center
                      text-white hover:bg-indigo-700 hover:scale-110
                      active:scale-95 transition-all duration-200"
         >
