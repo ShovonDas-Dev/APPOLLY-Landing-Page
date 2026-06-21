@@ -5,6 +5,7 @@ import HeroBg from "../image/HeroBG.png";
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
 import Appfeatures from '../components/Appfeatures';
+import AppInterface from '../components/AppInterface/AppInterface';
 const HomePage = () => {
   return (
     <>
@@ -41,6 +42,11 @@ const HomePage = () => {
                 backgroundRepeat: "no-repeat",
               }}>
           <Appfeatures/>
+        </section>
+
+        {/* App Interface */}
+        <section>
+          <AppInterface/>
         </section>
 
         
