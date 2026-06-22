@@ -1,50 +1,32 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import Mockup1 from "../../image/Mockup/Mockup1.png"
-import Mockup2 from "../../image/Mockup/Mockup2.png"
-import Mockup3 from "../../image/Mockup/Mockup3.png"
-import Mockup4 from "../../image/Mockup/Mockup4.png"
-import Mockup5 from "../../image/Mockup/Mockup5.png"
+import Mockup1 from "../../image/Mockup/Mockup1.png";
+import Mockup2 from "../../image/Mockup/Mockup2.png";
+import Mockup3 from "../../image/Mockup/Mockup3.png";
+import Mockup4 from "../../image/Mockup/Mockup4.png";
+import Mockup5 from "../../image/Mockup/Mockup5.png";
+
 // ===================================================================
-// FINANCE APP SLIDER  (React + Tailwind + Framer Motion)
-// -------------------------------------------------------------------
-// Eta ekta beginner-friendly carousel/slider component.
-//
-// Design (original mockup theke dekha):
-//   - Center e ekta boro phone-frame e active screen dekhay (sharp)
-//   - Left o right e pasher screenshot gulo faded/grayscale hoye
-//     half-dekha jay (jeno preview, click korle oi slide e jawa jay)
-//   - Niche dot indicators ase, r dui pashe left/right arrow button
-//
-// Beginner Tip:
-//   - "slides" array e shob image path deya ase
-//   - "activeIndex" state diye bujha jay ekhon kon slide dekhano hocche
-//   - Framer motion er "AnimatePresence" diye slide change er
-//     smooth animation kora hoyeche
+// FINANCE APP SLIDER
+//  Desktop (lg+)  → 5 phones: far-left | left | CENTER | right | far-right
+//  Tablet  (sm–lg) → 3 phones: left | CENTER | right
+//  Mobile  (<sm)   → 1 phone:  CENTER only
 // ===================================================================
 
-// Step 1: 5 ta slide. Image gulo public/images folder theke load hobe.
 const slides = [
-  { id: 1, image: Mockup1, alt: "Income overview with send, change, pay, borrow options" },
-  { id: 2, image: Mockup4, alt: "Visa card with balance and money spent" },
-  { id: 3, image: Mockup2, alt: "Yearly statistics with money spent chart" },
+  { id: 1, image: Mockup1, alt: "Income overview" },
+  { id: 2, image: Mockup4, alt: "Visa card with balance" },
+  { id: 3, image: Mockup2, alt: "Yearly statistics" },
   { id: 4, image: Mockup5, alt: "Income and expenses summary" },
-  { id: 5, image: Mockup3, alt: "Expenses breakdown by category" },
+  { id: 5, image: Mockup3, alt: "Expenses breakdown" },
 ];
 
 export default function FinanceSlider() {
-
-  // ekhon kon slide ta center e (active) ase
   const [activeIndex, setActiveIndex] = useState(0);
-  // direction: 1 = right dik e jacche, -1 = left dik e jacche
   const [direction, setDirection] = useState(1);
 
-  // circular index ber kora (last theke abar first e fire ashe)
-    const getIndex = (index) => (index + slides.length) % slides.length;
-
-  const prevIndex = getIndex(activeIndex - 1);
-  const nextIndex = getIndex(activeIndex + 1);  
+  const getIndex = (i) => (i + slides.length) % slides.length;
 
   const goToNext = useCallback(() => {
     setDirection(1);
@@ -61,108 +43,131 @@ export default function FinanceSlider() {
     setActiveIndex(index);
   };
 
-  // Autoplay: every 4 second e automatic next slide e jay
   useEffect(() => {
-    const timer = setInterval(() => {
-      goToNext();
-    }, 4000);
+    const timer = setInterval(goToNext, 4000);
     return () => clearInterval(timer);
   }, [goToNext]);
 
+  // index helpers
+  const farPrev = getIndex(activeIndex - 2);
+  const prev    = getIndex(activeIndex - 1);
+  const next    = getIndex(activeIndex + 1);
+  const farNext = getIndex(activeIndex + 2);
+
   return (
-    <div className="w-full min-h-screen  flex items-center justify-center px-4  sm:py-16">
-      <div className="relative w-full ">
-        {/* ====================================================
-            SLIDER STAGE
-            mobile: shudhu center phone dekhabe
-            sm/md/lg: left+center+right tin ta dekhabe
-        ===================================================== */}
-        <div className="relative flex items-center justify-center max-w-3xl mx-auto h-[380px] sm:h-[420px] md:h-[460px]">
-          {/* ---- LEFT preview (faded screenshot, no phone frame) ---- */}
-          <button
-            
-            aria-label="Previous slide preview"
-            className="hidden sm:block absolute left-0 md:left-6 lg:left-10 z-0
-                       w-[120px] md:w-[150px] lg:w-[170px]
-                       opacity-50 grayscale-[20%] hover:opacity-70
-                       transition-opacity duration-300 cursor-pointer"
+    <div className="w-full flex flex-col mx-w-3xl items-center justify-center py-10 px-4">
+
+      {/* ── STAGE ── */}
+      <div className="relative w-full max-w-5xl flex items-center justify-center
+                     ">
+
+        {/* ── FAR-LEFT  (desktop only, most faded) ── */}
+        <button
+          onClick={goToPrev}
+          aria-label="Go to previous slide"
+          className="hidden lg:block absolute z-0 cursor-pointer
+                     left-0
+                     w-[120px] xl:w-[135px]
+                     opacity-50  hover:opacity-80
+                     transition-opacity duration-300"
+        >
+          <PhoneFrame>
+            <img src={slides[farPrev].image} alt="" className="w-full h-auto rounded-[1.3rem] object-cover" draggable={false} />
+          </PhoneFrame>
+        </button>
+
+        {/* ── LEFT  (tablet + desktop, medium fade) ── */}
+        <button
+          onClick={goToPrev}
+          aria-label="Go to previous slide"
+          className="hidden sm:block absolute z-[1] cursor-pointer
+                     left-0 lg:left-[140px] xl:left-[155px]
+                     w-[130px] md:w-[145px] lg:w-[155px]
+                     opacity-45 grayscale-[20%] hover:opacity-65
+                     transition-opacity duration-300"
+        >
+          <PhoneFrame>
+            <img src={slides[prev].image} alt="" className="w-full h-auto rounded-[1.4rem] object-cover" draggable={false} />
+          </PhoneFrame>
+        </button>
+
+        {/* ── CENTER (always visible, animated) ── */}
+        <AnimatePresence initial={false} custom={direction} mode="popLayout">
+          <motion.div
+            key={slides[activeIndex].id}
+            custom={direction}
+            initial={{ x: direction > 0 ? 140 : -140, opacity: 0, scale: 0.82 }}
+            animate={{ x: 0, opacity: 1, scale: 1 }}
+            exit={{ x: direction > 0 ? -140 : 140, opacity: 0, scale: 0.85 }}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+            className="relative z-10"
           >
-            <img
-              src={slides[prevIndex].image}
-              alt=""
-              className="w-full h-auto rounded-2xl shadow-md object-cover"
-              draggable={false}
-            />
-          </button>
+            <PhoneFrame size="lg">
+              <img
+                src={slides[activeIndex].image}
+                alt={slides[activeIndex].alt}
+                className="w-full h-auto rounded-[1.7rem] object-cover"
+                draggable={false}
+              />
+            </PhoneFrame>
+          </motion.div>
+        </AnimatePresence>
 
-          {/* ---- RIGHT preview (faded screenshot, no phone frame) ---- */}
-          <button
-           
-            aria-label="Next slide preview"
-            className="hidden sm:block absolute right-0 md:right-6 lg:right-10 z-0
-                       w-[120px] md:w-[150px] lg:w-[170px]
-                       opacity-50 grayscale-[20%] hover:opacity-70
-                       transition-opacity duration-300 cursor-pointer"
-          >
-            <img
-              src={slides[nextIndex].image}
-              alt=""
-              className="w-full h-auto rounded-2xl shadow-md object-cover"
-              draggable={false}
-            />
-          </button>
+        {/* ── RIGHT  (tablet + desktop, medium fade) ── */}
+        <button
+          onClick={goToNext}
+          aria-label="Go to next slide"
+          className="hidden sm:block absolute z-[1] cursor-pointer
+                     right-0 lg:right-[140px] xl:right-[155px]
+                     w-[130px] md:w-[145px] lg:w-[155px]
+                     opacity-45 grayscale-[20%] hover:opacity-65
+                     transition-opacity duration-300"
+        >
+          <PhoneFrame>
+            <img src={slides[next].image} alt="" className="w-full h-auto rounded-[1.4rem] object-cover" draggable={false} />
+          </PhoneFrame>
+        </button>
 
-          {/* ---- CENTER active slide, wrapped in a phone bezel ---- */}
-          <AnimatePresence initial={false} custom={direction} mode="popLayout">
-            <motion.div
-              key={slides[activeIndex].id}
-              custom={direction}
-              initial={{ x: direction > 0 ? 100 : -100, opacity: 0, scale: 0.2 }}
-              animate={{ x: 0, opacity: 1, scale: 1 }}
-              exit={{ x: direction > 0 ? -100 : 100, opacity: 0, scale: 0.92 }}
-              transition={{ duration: 0.5 , ease: "easeInOut" }}
-              className="relative z-10"
-            >
-              {/* Phone bezel wrapper -- shudhu center slide er jonno */}
-              <div className="relative w-[200px] sm:w-[220px] p-[5px] bg-black rounded-[2.2rem] shadow-2xl">
-                {/* speaker notch */}
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-3 bg-black rounded-full z-20 flex items-center justify-center">
-                  <span className="w-1.5 h-1.5 bg-gray-700 rounded-full" />
-                </div>
-                <img
-                  src={slides[activeIndex].image}
-                  alt={slides[activeIndex].alt}
-                  className="w-full h-auto rounded-[1.6rem] object-cover"
-                  draggable={false}
-                />
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        {/* ── FAR-RIGHT  (desktop only, most faded) ── */}
+        <button
+          onClick={goToNext}
+          aria-label="Go to next slide"
+          className="hidden lg:block absolute z-0 cursor-pointer
+                     right-0
+                     w-[120px] xl:w-[135px]
+                     opacity-25 grayscale hover:opacity-40
+                     transition-opacity duration-300"
+        >
+          <PhoneFrame>
+            <img src={slides[farNext].image} alt="" className="w-full h-auto rounded-[1.3rem] object-cover" draggable={false} />
+          </PhoneFrame>
+        </button>
+      </div>
 
-        {/* ====================================================
-            ARROW BUTTONS (left = outline circle, right = filled)
-        ===================================================== */}
+      {/* ── ARROW BUTTONS ── */}
+      <div className="relative w-full max-w-5xl">
+        {/* Left — outline */}
         <button
           onClick={goToPrev}
           aria-label="Previous slide"
-          className="absolute left-2 sm:left-4 md:left-0 top-1/2 -translate-y-1/2 z-20
+          className="absolute -top-[235px] sm:-top-[255px] left-2 sm:-left-4 z-20
                      w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white
                      border-2 border-indigo-200 flex items-center justify-center
                      text-indigo-400 hover:border-indigo-400 hover:text-indigo-600
-                     hover:scale-110 active:scale-95 transition-all duration-200"
+                     hover:scale-110 active:scale-95 transition-all duration-200 shadow-sm"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
+        {/* Right — filled indigo */}
         <button
           onClick={goToNext}
           aria-label="Next slide"
-          className="absolute right-2 sm:right-4 md:right-0 top-1/2 -translate-y-1/2 z-20
+          className="absolute -top-[235px] sm:-top-[255px] right-2 sm:-right-4 z-20
                      w-11 h-11 sm:w-14 sm:h-14 rounded-full
-                     bg-primary shadow-lg flex items-center justify-center
+                     bg-indigo-600 shadow-lg flex items-center justify-center
                      text-white hover:bg-indigo-700 hover:scale-110
                      active:scale-95 transition-all duration-200"
         >
@@ -170,29 +175,53 @@ export default function FinanceSlider() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
-
-        {/* ====================================================
-            DOT INDICATORS
-        ===================================================== */}
-        <div className="flex items-center justify-center gap-2 mt-6 sm:mt-8">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.id}
-              onClick={() => goToSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              className="p-1"
-            >
-              <span
-                className={`block rounded-full transition-all duration-300 ${
-                  index === activeIndex
-                    ? "w-6 h-2.5 bg-indigo-600"
-                    : "w-2.5 h-2.5 bg-indigo-200 hover:bg-indigo-300"
-                }`}
-              />
-            </button>
-          ))}
-        </div>
       </div>
+
+      {/* ── DOT INDICATORS ── */}
+      <div className="flex items-center justify-center gap-2 mt-6 sm:mt-8">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.id}
+            onClick={() => goToSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            className="p-1"
+          >
+            <span
+              className={`block rounded-full transition-all duration-300 ${
+                index === activeIndex
+                  ? "w-6 h-2.5 bg-indigo-600"
+                  : "w-2.5 h-2.5 bg-indigo-200 hover:bg-indigo-300"
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── PhoneFrame ─────────────────────────────────────────────────────
+// size="lg" → center phone (bigger bezel + notch)
+// default   → side phones (smaller)
+function PhoneFrame({ children, size }) {
+  const isLg = size === "lg";
+  return (
+    <div
+      className={`relative bg-black shadow-2xl ${
+        isLg
+          ? "w-[190px] sm:w-[210px] lg:w-[230px] rounded-[2.4rem] p-[6px]"
+          : "w-full rounded-[2rem] p-[5px]"
+      }`}
+    >
+      {/* notch */}
+      <div
+        className={`absolute top-2 left-1/2 -translate-x-1/2 bg-black rounded-full z-20 ${
+          isLg ? "w-12 h-3" : "w-8 h-2"
+        }`}
+      >
+        <span className={`block mx-auto mt-[3px] bg-gray-700 rounded-full ${isLg ? "w-1.5 h-1.5" : "w-1 h-1"}`} />
+      </div>
+      {children}
     </div>
   );
 }
