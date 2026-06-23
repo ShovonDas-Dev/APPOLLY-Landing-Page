@@ -1,0 +1,59 @@
+import { motion } from "framer-motion";
+import { FaPlay } from "react-icons/fa";
+import VideoImg from "../../image/Videoimg.png";
+import bg from "../../image/HeroBG.png";
+import SectionHeader from "../SectionHeader";
+
+export default function AppTutorial() {
+  return (
+    <section className="  ">
+      <div className=" flex flex-col gap-0  container mx-auto ">
+        {/* Text */}
+        <div>
+            <SectionHeader
+          title="how to use the app perfectly"
+          titleClassName="text-white"
+          subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac nunc libero urna, feugiat."
+          subtitleClassName="text-white"
+        />
+        </div>
+
+        <div>
+          {/* Video Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 80 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className=" absolute top-0 left-0 *:  mx-auto  max-w-4xl"
+          >
+            <div className=" rounded-xl ">
+              <img
+                src={VideoImg}
+                alt="Tutorial"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            {/* Play Button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              animate={{
+                scale: [1, 1.15, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+              }}
+              className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[#5A56F6] shadow-xl"
+            >
+              <FaPlay className="ml-1 text-lg" />
+            </motion.button>
+          </motion.div>
+          {/* White Bottom Section */}
+          <div className="absolute bottom-0 left-0 h-24 w-full bg-white" />
+        </div>
+      </div>
+    </section>
+  );
+}

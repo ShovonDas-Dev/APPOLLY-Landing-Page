@@ -1,6 +1,7 @@
 import React from 'react'
 import SectionHeader from '../SectionHeader'
 import FinanceSlider from './FinanceSlider'
+import AppDownloadSection from './AppDownloadSection'
 
 const AppInterface = () => {
   return (
@@ -17,6 +18,10 @@ const AppInterface = () => {
         {/* Slider section start */}
         <div>
             <FinanceSlider/>
+        </div>
+        {/* Download App Now */}
+        <div className='py-10'>
+          <AppDownloadSection/>
         </div>
     </div>
   )
