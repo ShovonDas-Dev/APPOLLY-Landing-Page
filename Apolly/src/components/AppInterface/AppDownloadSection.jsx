@@ -137,7 +137,7 @@ export default function AppDownloadSection() {
                 custom={i}
                 variants={cardVariants}
                 whileHover={{ y: -4, boxShadow: "0 12px 32px rgba(109,40,217,0.18)" }}
-                className="bg-violet-600 rounded-2xl p-5 flex flex-col items-center gap-2 text-white cursor-default select-none"
+                className="bg-primary rounded-2xl p-5 flex flex-col items-center gap-2 text-white cursor-default select-none"
               >
                 <motion.div
                   initial={{ scale: 0.6, opacity: 0 }}
@@ -147,7 +147,7 @@ export default function AppDownloadSection() {
                 >
                   {stat.icon}
                 </motion.div>
-                <div className="text-2xl font-extrabold tabular-nums">
+                <div className="text-xl font-bold tabular-nums">
                   <AnimatedNumber target={stat.value} inView={isInView} />
                 </div>
                 <div className="text-xs font-my-font font-semibold tracking-widest opacity-90">{stat.label}</div>

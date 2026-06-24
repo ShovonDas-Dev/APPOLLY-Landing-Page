@@ -7,6 +7,7 @@ import AboutSection from '../components/AboutSection';
 import Appfeatures from '../components/Appfeatures';
 import AppInterface from '../components/AppInterface/AppInterface';
 import AppTutorial from '../components/AppTutorial/AppTutorial';
+import ReactiveTeam from '../components/Reactive-team/ReactiveTeam';
 const HomePage = () => {
   return (
     <>
@@ -52,18 +53,14 @@ const HomePage = () => {
 
         {/* app perfectly  */}
 
-        <section
-              className=" bg- bg-cover "
-              style={{
-                backgroundImage: `url(${HeroBg})`,
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                backgroundRepeat: "no-repeat",
-              }}>
+        <section>
           <AppTutorial/>
         </section>
 
-        
+        {/* Our reative team */}
+        <section>
+              <ReactiveTeam/>
+        </section>
     </>
   )
 }
