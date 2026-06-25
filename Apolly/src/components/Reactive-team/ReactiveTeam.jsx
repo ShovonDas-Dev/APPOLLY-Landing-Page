@@ -1,40 +1,15 @@
 import React from "react";
 import SectionHeader from "../SectionHeader";
-import { div } from "framer-motion/client";
 
-import profile1 from "../../image/TeamMember/Profile1.png"
-import profile2 from "../../image/TeamMember/Profile2.png"
-import profile3 from "../../image/TeamMember/Profile3.png"
+import card from "../../data/reActivateTeamData";
+import { motion } from "framer-motion";
 
-const card = [
-  {
-    id: 1,
-    name:"Carla Press",
-    position:"App Developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae.",
-    image: profile1
-  },
-    {
-    id: 2,
-    name:"Craig Gouse",
-    position:"UI/UX Designer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae.",
-    image: profile2
-  },
-    {
-    id: 3,
-    name:"Jocelyn Septimus",
-    position:"Website developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae.",
-    image: profile3
-  }
-]
+
 
 const ReactiveTeam = () => {
-  console.log(card);
+  console.log(card[1].socials);
   return (
-    <div className="max-w-7xl mx-auto">
-
+    <div className="max-w-7xl mx-auto pb-30">
       {/* Section header  */}
       <div>
         <SectionHeader
@@ -46,26 +21,46 @@ const ReactiveTeam = () => {
       </div>
       {/* Team member card list */}
 
-      
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-          {card.map((p) => (
-            <div key={p.id} className="">
-              {/* profile part */}
-                <div className="flex flex-col items-center">
-                  <img src={p.image} alt={p.position} />
-                  <h2>{p.name}</h2>
-                  <h2>{p.title}</h2>
-                  <p>{p.description}</p>
-
-                </div>
-              {/* link part */}
-                <div></div>
+      <div className="flex flex-col pt-30 md:flex-row justify-center items-center gap-20">
+        {card.map((p) => (
+          <div key={p.id} className="">
+            {/* profile part */}
+            <div className="flex flex-col items-center py-10 w-[320px] h-auto shadow-gray-300 shadow-xl ">
+              
+              
+            <div className=" relative w-36 h-36">
+              {/* ring */}
+              <motion.div 
+              animate={{ rotate:360 }}
+              transition={{duration:15, repeat:Infinity, ease:"linear"}}
+              className="absolute border-dashed border-primary border-[3px] inset-0 rounded-full "/>
+              <div className=" absolute inset-[6px] overflow-hidden rounded-full">
+                <img src={p.image} className="w-full h-full object-cover" alt="" />
+              </div> 
             </div>
-          ))}
-        </div>
-       
 
 
+              <div className="pt-10 text-center font-my-font">
+                <h2 className="font-bold text-xl md:text-2xl text-black">
+                  {p.name}
+                </h2>
+                <h2 className="text-gray pb-5 md:text-l ">{p.position}</h2>
+                <p className="text-gray p-2">{p.description}</p>
+              </div>
+            
+            {/* link part */}
+            <div className="flex gap-5 py-4">
+              {p.socials.map((icon )=>(
+                <button className="hover:text-primary text-xl pr-3 border-r last:border-0 last:p-0" key={icon} href={icon.link}>
+                {icon.platform}
+                </button>
+              ))}
+            </div>
+          </div>
+          </div>
+        ))}
+      </div>
+      
     </div>
   );
 };
