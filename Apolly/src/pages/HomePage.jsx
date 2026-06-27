@@ -8,6 +8,8 @@ import Appfeatures from '../components/Appfeatures';
 import AppInterface from '../components/AppInterface/AppInterface';
 import AppTutorial from '../components/AppTutorial/AppTutorial';
 import ReactiveTeam from '../components/Reactive-team/ReactiveTeam';
+import HappyCustomer from '../components/HappyCustomer/HappyCustomer';
+import RecentBlog from '../components/RecentBlog/RecentBlog';
 const HomePage = () => {
   return (
     <>
@@ -60,6 +62,22 @@ const HomePage = () => {
         {/* Our reative team */}
         <section>
               <ReactiveTeam/>
+        </section>
+
+        {/* Our Happy Customers */}
+        <section className=" bg- bg-cover "
+              style={{
+                backgroundImage: `url(${HeroBg})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}>
+          <HappyCustomer/>
+        </section>
+
+        {/* Our recent blog*/}
+        <section>
+              <RecentBlog/>
         </section>
     </>
   )
