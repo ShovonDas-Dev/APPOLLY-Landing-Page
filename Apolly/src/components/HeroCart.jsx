@@ -8,7 +8,7 @@ export default function HeroCard() {
 
       {/* Frame 1 */}
       <motion.div
-        className="absolute  md:left-25 w-[350px] h-[450px]  md:w-[450px]  md:h-[450px] border-[8px] border-white/15"
+        className="absolute left-0 md:left-0 w-[350px] h-[450px] md:w-[450px] md:h-[450px] border-[8px] border-white/15"
         animate={{
           y: [-10, 10, -10],
           rotate: [-1, 1, -1],

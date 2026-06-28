@@ -4,7 +4,7 @@ import TeamSlider from './TeamSlider'
 
 const HappyCustomer = () => {
   return (
-    <div className='py-20 mx-w-7xl'>
+    <div className='py-20 max-w-7xl mx-auto'>
         <SectionHeader 
         title="Our Happy Customers"
         titleClassName='text-white'

@@ -7,13 +7,6 @@ import Mockup3 from "../../image/Mockup/Mockup3.png";
 import Mockup4 from "../../image/Mockup/Mockup4.png";
 import Mockup5 from "../../image/Mockup/Mockup5.png";
 
-// ===================================================================
-// FINANCE APP SLIDER
-//  Desktop (lg+)  → 5 phones: far-left | left | CENTER | right | far-right
-//  Tablet  (sm–lg) → 3 phones: left | CENTER | right
-//  Mobile  (<sm)   → 1 phone:  CENTER only
-// ===================================================================
-
 const slides = [
   { id: 1, image: Mockup1, alt: "Income overview" },
   { id: 2, image: Mockup4, alt: "Visa card with balance" },
@@ -50,17 +43,14 @@ export default function FinanceSlider() {
 
   // index helpers
   const farPrev = getIndex(activeIndex - 2);
-  const prev    = getIndex(activeIndex - 1);
-  const next    = getIndex(activeIndex + 1);
+  const prev = getIndex(activeIndex - 1);
+  const next = getIndex(activeIndex + 1);
   const farNext = getIndex(activeIndex + 2);
 
   return (
-    <div className="w-full flex flex-col mx-w-3xl items-center justify-center py-10 px-4">
-
+    <div className="w-full overflow-hidden flex flex-col max-w-3xl mx-auto items-center justify-center py-10 px-4">
       {/* ── STAGE ── */}
-      <div className="relative w-full max-w-5xl flex items-center justify-center
-                     ">
-
+      <div className="overflow-hidden relative w-full max-w-full flex items-center justify-center">
         {/* ── FAR-LEFT  (desktop only, most faded) ── */}
         <button
           onClick={goToPrev}
@@ -72,7 +62,12 @@ export default function FinanceSlider() {
                      transition-opacity duration-300"
         >
           <PhoneFrame>
-            <img src={slides[farPrev].image} alt="" className="w-full h-auto rounded-[1.3rem] object-cover" draggable={false} />
+            <img
+              src={slides[farPrev].image}
+              alt=""
+              className="w-full h-auto rounded-[1.3rem] object-cover"
+              draggable={false}
+            />
           </PhoneFrame>
         </button>
 
@@ -87,7 +82,12 @@ export default function FinanceSlider() {
                      transition-opacity duration-300"
         >
           <PhoneFrame>
-            <img src={slides[prev].image} alt="" className="w-full h-auto rounded-[1.4rem] object-cover" draggable={false} />
+            <img
+              src={slides[prev].image}
+              alt=""
+              className="overflow-hidden w-full h-auto rounded-[1.4rem] object-cover"
+              draggable={false}
+            />
           </PhoneFrame>
         </button>
 
@@ -124,7 +124,12 @@ export default function FinanceSlider() {
                      transition-opacity duration-300"
         >
           <PhoneFrame>
-            <img src={slides[next].image} alt="" className="w-full h-auto rounded-[1.4rem] object-cover" draggable={false} />
+            <img
+              src={slides[next].image}
+              alt=""
+              className="w-full h-auto rounded-[1.4rem] object-cover"
+              draggable={false}
+            />
           </PhoneFrame>
         </button>
 
@@ -139,7 +144,12 @@ export default function FinanceSlider() {
                      transition-opacity duration-300"
         >
           <PhoneFrame>
-            <img src={slides[farNext].image} alt="" className="w-full h-auto rounded-[1.3rem] object-cover" draggable={false} />
+            <img
+              src={slides[farNext].image}
+              alt=""
+              className="w-full h-auto rounded-[1.3rem] object-cover"
+              draggable={false}
+            />
           </PhoneFrame>
         </button>
       </div>
@@ -156,8 +166,19 @@ export default function FinanceSlider() {
                      text-indigo-400 hover:border-indigo-400 hover:text-indigo-600
                      hover:scale-110 active:scale-95 transition-all duration-200 shadow-sm"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
 
@@ -171,8 +192,19 @@ export default function FinanceSlider() {
                      text-white hover:bg-indigo-700 hover:scale-110
                      active:scale-95 transition-all duration-200"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5 sm:w-6 sm:h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
       </div>
@@ -207,7 +239,7 @@ function PhoneFrame({ children, size }) {
   const isLg = size === "lg";
   return (
     <div
-      className={`relative bg-black shadow-2xl ${
+      className={`relative bg-black shadow-2xl overflow-hidden ${
         isLg
           ? "w-[190px] sm:w-[210px] lg:w-[230px] rounded-[2.4rem] p-[6px]"
           : "w-full rounded-[2rem] p-[5px]"
@@ -219,7 +251,9 @@ function PhoneFrame({ children, size }) {
           isLg ? "w-12 h-3" : "w-8 h-2"
         }`}
       >
-        <span className={`block mx-auto mt-[3px] bg-gray-700 rounded-full ${isLg ? "w-1.5 h-1.5" : "w-1 h-1"}`} />
+        <span
+          className={`block mx-auto mt-[3px] bg-gray-700 rounded-full ${isLg ? "w-1.5 h-1.5" : "w-1 h-1"}`}
+        />
       </div>
       {children}
     </div>

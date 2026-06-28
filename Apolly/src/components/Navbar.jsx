@@ -112,8 +112,8 @@ export default function Navbar() {
       </motion.nav>
 
       {/* Mobile / Tablet nav */}
-      <div className="md:hidden py-4" >
-      <nav className="flex md:hidden items-center justify-between mx-auto mt- bg-[#5c52d5]  px-4 h-10">
+      <div className="md:hidden py-4">
+      <nav className="flex md:hidden items-center justify-between w-full bg-[#5c52d5] px-4 h-10">
         <button
           onClick={() => setMenuOpen(true)}
           className="text-white bg-transparent border-none cursor-pointer text-2xl p-1"
@@ -121,7 +121,7 @@ export default function Navbar() {
         >
           ☰
         </button>
-        <img src={logo} alt="Apolly Logo" className=" w-30 relative px-4 py-5.5 bg-white  "   />
+        <img src={logo} alt="Apolly Logo" className="w-24 h-auto relative px-3 py-2 bg-white" />
         <DownloadBtn />
       </nav>
       </div>

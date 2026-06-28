@@ -186,6 +186,7 @@ export default function TeamSlider() {
      */
     <div
       className="
+        font-my-font
         relative flex flex-col items-center justify-center
         overflow-hidden
         max-w-4xl

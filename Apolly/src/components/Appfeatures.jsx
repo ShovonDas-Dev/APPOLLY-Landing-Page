@@ -45,7 +45,7 @@ const Appfeatures = () => {
           <div className="flex flex-col justify-around px-10 ">
             {[featuresData[1], featuresData[2]].map((d) => (
               <motion.div
-                initial={{ x: -100, opacity: 0 }}
+                initial={{ x: -20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.5 }}
@@ -71,7 +71,7 @@ const Appfeatures = () => {
           <div className="flex flex-col justify-around px-10 ">
             {[featuresData[3], featuresData[4]].map((d) => (
               <motion.div
-                initial={{ x: 100, opacity: 0 }}
+                initial={{ x: 20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.6 }}               
@@ -90,7 +90,7 @@ const Appfeatures = () => {
 
         {/*Last card */}
         <motion.div
-          initial={{ y: -100, opacity: 0 }}
+          initial={{ y: -50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 , delay:0.5 }}        

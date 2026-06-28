@@ -52,21 +52,21 @@ const AboutSection = () => {
                     />
                     {/* Smartphone Mockup */}
                     <motion.img 
-                    initial={{ opacity: 0, x: -100 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView ={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    className="relative z-10 w-xs md:w-auto" src={smartphone} alt="Smartphone Mockup" />
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="overflow-hidden relative z-10 w-xs md:w-auto" src={smartphone} alt="Smartphone Mockup" />
                 </motion.div>
                 {/* Features List */}
                 <div>
                     {features.map(feature => (
                         <motion.div 
-                        initial={{ opacity: 0, x: 100 }}
+                        initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: feature.id * 0.2 }}
                         viewport={{ once: true }}
 
-                        key={feature.id} className="mb-10 my-5 mx-5 flex items-start gap-4 shadow-md shadow-purple-100 border-purple-100 border-2 hover:shadow-primary hover:transition-all hover:duration-500 p-4 rounded-lg">
+                        key={feature.id} className="overflow-hidden mb-10 my-5 mx-5 flex items-start gap-4 shadow-md shadow-purple-100 border-purple-100 border-2 hover:shadow-primary hover:transition-all hover:duration-500 p-4 rounded-lg">
                             <div>
                                 <div className="  bg-primary flex items-center justify-center rounded-full text-md  text-white ">
                                     <Check/>

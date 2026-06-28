@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Appstorelogo from "../../image/appstorelogo.png"
 import Playstorelogo from "../../image/playstorelogo.png"
 import { FiDownload } from "react-icons/fi";
@@ -28,21 +28,37 @@ const STATS = [
 ];
 
 function AnimatedNumber({ target, inView }) {
-  const motionVal = useMotionValue(0);
-  const spring = useSpring(motionVal, { stiffness: 60, damping: 20, mass: 1 });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (inView) {
-      motionVal.set(target);
-    } else {
-      motionVal.set(0);
+    if (!inView) {
+      setDisplay(0);
+      return;
     }
-  }, [inView, target, motionVal]);
 
-  useEffect(() => {
-    return spring.onChange((v) => setDisplay(Math.round(v)));
-  }, [spring]);
+    let frameId = null;
+    const duration = 900;
+    const startTime = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const nextValue = Math.round(target * easedProgress);
+
+      setDisplay(nextValue);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(tick);
+      }
+    };
+
+    setDisplay(0);
+    frameId = requestAnimationFrame(tick);
+
+    return () => {
+      if (frameId) cancelAnimationFrame(frameId);
+    };
+  }, [inView, target]);
 
   return <span>{display.toLocaleString()}</span>;
 }
@@ -157,8 +173,8 @@ export default function AppDownloadSection() {
         </div>
 
         {/* RIGHT: Phone mockups */}
-        <div>
-            <img src={GravityCard} alt="" className="w-l" />
+        <div className="w-full max-w-[320px] mx-auto">
+            <img src={GravityCard} alt="" className="w-full h-auto" />
         </div>
       </motion.div>
     </section>

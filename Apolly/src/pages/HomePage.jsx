@@ -10,11 +10,12 @@ import AppTutorial from '../components/AppTutorial/AppTutorial';
 import ReactiveTeam from '../components/Reactive-team/ReactiveTeam';
 import HappyCustomer from '../components/HappyCustomer/HappyCustomer';
 import RecentBlog from '../components/RecentBlog/RecentBlog';
+import Footer from '../components/Footer/Footer';
 const HomePage = () => {
   return (
     <>
         {/* Nav and Hero section */}
-        <section className=" bg- bg-cover min-h-screen"
+        <section 
          style={{
           backgroundImage: `url(${HeroBg})`,
           backgroundPosition: "center",
@@ -38,7 +39,7 @@ const HomePage = () => {
         </section>
 
         {/* App features */}
-        <section className=" bg- bg-cover "
+        <section className=" bbg-cover "
               style={{
                 backgroundImage: `url(${HeroBg})`,
                 backgroundPosition: "center",
@@ -48,7 +49,7 @@ const HomePage = () => {
           <Appfeatures/>
         </section>
 
-        {/* App Interface */}
+        {/* Checkout Our App Interface Look */}
         <section>
           <AppInterface/>
         </section>
@@ -78,6 +79,12 @@ const HomePage = () => {
         {/* Our recent blog*/}
         <section>
               <RecentBlog/>
+        </section>
+
+        {/* Footer section */}
+
+        <section>
+          <Footer/>
         </section>
     </>
   )

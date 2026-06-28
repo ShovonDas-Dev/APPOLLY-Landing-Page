@@ -4,7 +4,7 @@ const POSTS = [
     id: 1,
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80",
     title: "The Snap Pixel: How It Works and How to Install",
-    excerpt:
+    paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim.",
     href: "#",
   },
@@ -12,7 +12,7 @@ const POSTS = [
     id: 2,
     image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80",
     title: "Global Partner Solutions: A Partnership of Innovation",
-    excerpt:
+    paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim.",
     href: "#",
   },
@@ -20,17 +20,18 @@ const POSTS = [
     id: 3,
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
     title: "2021: An Opportunity for Snapchatters to Start Fresh",
-    excerpt:
+    paragraph:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim.",
     href: "#",
   },
 ];
 
 
-function BlogCard({ image, title, excerpt, href }) {
+function BlogCard({ image, title, paragraph, href }) {
   return (
     
     <article className="
+    font-my-font
       group
       bg-white border border-gray-100 rounded-sm
       overflow-hidden
@@ -59,7 +60,7 @@ function BlogCard({ image, title, excerpt, href }) {
         <h2 className="
           text-sm sm:text-base font-bold uppercase tracking-wide
           text-gray-900 leading-snug mb-3
-          group-hover:text-indigo-700
+          group-hover:text-primary
           transition-colors duration-200
         ">
           {title}
@@ -67,20 +68,16 @@ function BlogCard({ image, title, excerpt, href }) {
 
         {/* Excerpt */}
         <p className="text-sm text-gray-500 leading-relaxed flex-1 mb-5">
-          {excerpt}
+          {paragraph}
         </p>
 
-        {/* Read More link */}
-        {/*
-         * The arrow `→` shifts right on hover using `translate-x`.
-         * The whole link also nudges right slightly for a nice effect.
-         */}
+
         <a
           href={href}
           className="
             inline-flex items-center gap-1
             text-xs sm:text-sm font-bold uppercase tracking-widest
-            text-indigo-600 hover:text-indigo-800
+            text-primary hover:text-indigo-800
             transition-colors duration-200
             w-fit
           "
@@ -102,6 +99,8 @@ function BlogCard({ image, title, excerpt, href }) {
 
 // ─── MAIN COMPONENT ────────────────────────────────────────────────
 export default function BlogCards() {
+  console.log(...POSTS)
+  console.log(POSTS)
   return (
     
     <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
