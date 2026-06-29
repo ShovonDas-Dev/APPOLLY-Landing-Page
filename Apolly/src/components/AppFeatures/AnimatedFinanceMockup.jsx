@@ -1,53 +1,50 @@
-/**
- * AnimatedFinanceMockup.jsx
- *
- * A simple animated mockup of a finance app screen.
- * Stack: React + Tailwind CSS + Framer Motion
- *
- * Setup:
- *   npm install framer-motion
- *
- * Tailwind just needs to be installed in your project — no extra config
- * needed, only default colors (violet, emerald, rose, sky, orange, gray) are used.
- *
- * 3 animations happen here:
- *   1. Numbers count up from 0 (balance, income, expenses, percentages)
- *   2. The bar chart grows upward, one bar after another
- *   3. The circular progress rings draw themselves
- */
 
-import { useEffect, useState } from "react";
-import { motion, animate } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, animate, useInView } from "framer-motion";
 
 // ---------------------------------------------
 // 1) A reusable "counting number" component
 // ---------------------------------------------
 // Takes a target number (like 567) and animates from 0 up to it.
-function AnimatedNumber({ value, prefix = "", decimals = 2, delay = 0 }) {
+
+
+function AnimatedNumber({
+  value,
+  prefix = "",
+  decimals = 2,
+  delay = 0,
+}) {
   const [shownValue, setShownValue] = useState(0);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
+    if (!started) return;
+
     const controls = animate(0, value, {
       duration: 1.4,
       delay,
       ease: "easeOut",
-      onUpdate: (latest) => setShownValue(latest),
+      onUpdate: (latest) => {
+        setShownValue(latest);
+      },
     });
-    return () => controls.stop(); // cleanup if component unmounts mid-animation
-  }, [value, delay]);
+
+    return () => controls.stop();
+  }, [started, value, delay]);
 
   const isNegative = value < 0;
-  const formattedNumber = Math.abs(shownValue).toFixed(decimals).replace(".", ",");
 
   return (
-    <span>
+    <motion.span
+      viewport={{ once: true, amount: 0.5 }}
+      onViewportEnter={() => setStarted(true)}
+    >
       {isNegative && "-"}
       {prefix}
-      {formattedNumber}
-    </span>
+      {Math.abs(shownValue).toFixed(decimals).replace(".", ",")}
+    </motion.span>
   );
 }
-
 // ---------------------------------------------
 // 2) The monthly bar chart
 // ---------------------------------------------
@@ -122,8 +119,9 @@ function CircularProgress({ percent, delay }) {
       {/* percentage number in the middle of the circle */}
       <motion.div 
       initial={{}}
+      animate={isInView ? { scale: 1, opacity: 1 } : {}}
       className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-gray-800">
-        <AnimatedNumber value={percent} decimals={0} delay={delay} /> %
+        <AnimatedNumber   value={percent} decimals={0} delay={delay} /> %
       </motion.div>
     </div>
   );

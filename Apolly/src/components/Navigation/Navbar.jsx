@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { name: "SCREENSHOT", href: "#screenshot" },
   { name: "BLOG", href: "#blog" },
 ];
-import logo from "../image/logo.png";
+import logo from "../../image/logo.png";
 
 
 

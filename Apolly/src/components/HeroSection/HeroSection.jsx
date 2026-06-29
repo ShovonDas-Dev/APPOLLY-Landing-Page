@@ -1,6 +1,6 @@
 
-import HeroCart from '../components/HeroCart';
-import WalletCard from '../components/WalletCard';
+import HeroCart from '../HeroSection/HeroCart';
+import WalletCard from '../HeroSection/WalletCard';
 
 const HeroSection = () => {
   return (

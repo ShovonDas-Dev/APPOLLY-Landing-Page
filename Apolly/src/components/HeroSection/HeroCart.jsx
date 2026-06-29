@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import playstorelogo from "../image/playstorelogo.png";
-import appstorelogo from "../image/appstorelogo.png";
+import playstorelogo from "../../image/playstorelogo.png";
+import appstorelogo from "../../image/appstorelogo.png";
 
 export default function HeroCard() {
   return (
@@ -8,7 +8,7 @@ export default function HeroCard() {
 
       {/* Frame 1 */}
       <motion.div
-        className="absolute left-0 md:left-0 w-[350px] h-[450px] md:w-[450px] md:h-[450px] border-[8px] border-white/15"
+        className="absolute overflow-hidden left-0 md:left-0 w-[320px] h-[480px] md:w-[450px] md:h-[450px] border-[8px] border-white/15"
         animate={{
           y: [-10, 10, -10],
           rotate: [-1, 1, -1],

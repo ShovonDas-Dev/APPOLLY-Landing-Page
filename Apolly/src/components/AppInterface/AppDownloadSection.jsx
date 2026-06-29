@@ -37,7 +37,7 @@ function AnimatedNumber({ target, inView }) {
     }
 
     let frameId = null;
-    const duration = 900;
+    const duration = 3000;
     const startTime = performance.now();
 
     const tick = (now) => {

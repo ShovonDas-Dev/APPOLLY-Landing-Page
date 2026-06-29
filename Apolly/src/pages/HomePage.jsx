@@ -1,10 +1,10 @@
 import React from 'react'
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navigation/Navbar';
 import HeroBg from "../image/HeroBG.png";
 
-import HeroSection from '../components/HeroSection';
-import AboutSection from '../components/AboutSection';
-import Appfeatures from '../components/Appfeatures';
+import HeroSection from '../components/HeroSection/HeroSection';
+import AboutSection from '../components/AboutSection/AboutSection';
+import Appfeatures from '../components/Appfeatures/Appfeatures';
 import AppInterface from '../components/AppInterface/AppInterface';
 import AppTutorial from '../components/AppTutorial/AppTutorial';
 import ReactiveTeam from '../components/Reactive-team/ReactiveTeam';
@@ -34,7 +34,9 @@ const HomePage = () => {
             
         </section>
         {/* About Section */}
-        <section className= " py-8 lg:py-12">
+        <section
+        id='about'
+        className= " py-8 lg:py-12">
         <AboutSection/>
         </section>
 

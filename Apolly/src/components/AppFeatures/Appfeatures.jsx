@@ -1,6 +1,6 @@
-import SectionHeader from "./SectionHeader";
-import featuresData from "../data/featuresData";
-import Animation from "../components/AnimatedFinanceMockup";
+import SectionHeader from "../SectionHeader";
+import featuresData from "../../data/featuresData";
+import Animation from "./AnimatedFinanceMockup";
 import { FerrisWheel } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -48,7 +48,7 @@ const Appfeatures = () => {
                 initial={{ x: -20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.5 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
 
                 key={d.id}
                 className="flex flex-col py-10 md:py-30 gap-2 items-center md:items-end font-my-font "
@@ -74,7 +74,7 @@ const Appfeatures = () => {
                 initial={{ x: 20, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.6 }}               
+                transition={{ duration: 0.8, delay: 0.4 }}               
                 key={d.id}
                 className="flex flex-col py-10 md:py-30 gap-2 items-center md:items-start  font-my-font "
               >

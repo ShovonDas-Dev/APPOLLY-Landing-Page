@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
-import smartphone from "../image/smartphone-mockup.png";
+import smartphone from "../../image/smartphone-mockup.png";
 import { motion } from "framer-motion";
-import SectionHeader from "./SectionHeader";
+import SectionHeader from ".././SectionHeader";
 const AboutSection = () => {
     const features = [
         {
