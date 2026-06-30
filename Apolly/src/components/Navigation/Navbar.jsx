@@ -3,7 +3,7 @@ import { TiSocialFacebook, TiSocialLinkedin, TiSocialTwitter, TiSocialYoutube } 
 import { motion } from "framer-motion";
 
 
-import logo from "../../image/logo.png";
+import logo from "../../image/Logo.png";
 
   const NAV_LINKS = [
     { label: "Home",       href: "#HOME" },
@@ -27,8 +27,7 @@ function DownloadBtn() {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [active, setActive] = useState("HOME");
-  console.log(NAV_LINKS.slice(0, 3))
+  const [active, setActive] = useState("#HOME");
 
   return (
     <div className="w-full font-my-font">
@@ -72,7 +71,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setActive(link.href)}
                 className={`no-underline text-xs md:text-sm  font-bold uppercase tracking-widest transition-colors pb-0.5 ${
-                  active === link
+                  active === link.href
                     ? "text-[#5c52d5] border-b-2 border-[#5c52d5]"
                     : "text-gray-700 hover:text-[#5c52d5]"
                 }`}
@@ -83,7 +82,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        
+
         <motion.img 
         initial={{opacity: 1, scale: 0.7 }}  
         animate={{ opacity: 1, scale: 1 }}
@@ -99,7 +98,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setActive(link.href)}
                   className={`no-underline text-xs md:text-sm  font-bold uppercase tracking-widest transition-colors pb-0.5 ${
-                    active === link
+                    active === link.href
                       ? "text-[#5c52d5] border-b-2 border-[#5c52d5]"
                       : "text-gray-700 hover:text-[#5c52d5]"
                   }`}
@@ -155,9 +154,9 @@ export default function Navbar() {
                 >
                   <a
                     href={link.href}
-                    onClick={() => { setActive(link.name); setMenuOpen(false); }}
+                    onClick={() => { setActive(link.href); setMenuOpen(false); }}
                     className={`no-underline text-sm font-bold uppercase tracking-widest ${
-                      active === link ? "text-primary" : "text-gray-800 hover:text-primary"
+                      active === link.href ? "text-primary" : "text-gray-800 hover:text-primary"
                     }`}
                   >
                     {link.label}
