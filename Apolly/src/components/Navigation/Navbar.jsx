@@ -2,15 +2,16 @@ import { useState } from "react";
 import { TiSocialFacebook, TiSocialLinkedin, TiSocialTwitter, TiSocialYoutube } from "react-icons/ti";
 import { motion } from "framer-motion";
 
-const NAV_LINKS = [
-  { name: "HOME", href: "#HomePage" },
-  { name: "ABOUT", href: "#about" },
-  { name: "FEATURES", href: "#features" },
-  { name: "SCREENSHOT", href: "#screenshot" },
-  { name: "BLOG", href: "#blog" },
-];
+
 import logo from "../../image/logo.png";
 
+  const NAV_LINKS = [
+    { label: "Home",       href: "#HOME" },
+    { label: "About",      href: "#ABOUT" },
+    { label: "Features",   href: "#FEATURES" },
+    { label: "Screenshot", href: "#SCREENSHOT" },
+    { label: "Blog",       href: "#BLOG" },
+  ];
 
 
 function DownloadBtn() {
@@ -27,6 +28,7 @@ function DownloadBtn() {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("HOME");
+  console.log(NAV_LINKS.slice(0, 3))
 
   return (
     <div className="w-full font-my-font">
@@ -64,18 +66,18 @@ export default function Navbar() {
       transition={{ duration: 0.5, delay: 0.4 }}
       className="hidden md:flex items-center justify-between bg-white border-b border-gray-100 px-6 h-12">
         <ul className="flex items-center gap-7 list-none m-0 p-0">
-          {["HOME", "ABOUT", "FEATURES"].map((link) => (
-            <li key={link}>
+          {NAV_LINKS.slice(0, 3).map((link) => (
+            <li key={link.label}>
               <a
-                href={link}
-                onClick={() => setActive(link)}
+                href={link.href}
+                onClick={() => setActive(link.href)}
                 className={`no-underline text-xs md:text-sm  font-bold uppercase tracking-widest transition-colors pb-0.5 ${
                   active === link
                     ? "text-[#5c52d5] border-b-2 border-[#5c52d5]"
                     : "text-gray-700 hover:text-[#5c52d5]"
                 }`}
               >
-                {link}
+                {link.label}
               </a>
             </li>
           ))}
@@ -91,18 +93,18 @@ export default function Navbar() {
 
         <div className="flex items-center gap-7">
           <ul className="flex items-center gap-7 list-none m-0 p-0">
-            {["SCREENSHOT", "BLOG"].map((link) => (
-              <li key={link}>
+            {NAV_LINKS.slice(3).map((link) => (
+              <li key={link.label}>
                 <a
-                  href="#"
-                  onClick={() => setActive(link)}
+                  href={link.href}
+                  onClick={() => setActive(link.href)}
                   className={`no-underline text-xs md:text-sm  font-bold uppercase tracking-widest transition-colors pb-0.5 ${
                     active === link
                       ? "text-[#5c52d5] border-b-2 border-[#5c52d5]"
                       : "text-gray-700 hover:text-[#5c52d5]"
                   }`}
                 >
-                  {link}
+                  {link.label}
                 </a>
               </li>
             ))}
@@ -148,17 +150,17 @@ export default function Navbar() {
             <ul className="list-none m-0 px-7">
               {NAV_LINKS.map((link, i) => (
                 <li
-                  key={link.name}
+                  key={link.label}
                   className={`py-3.5 ${i < NAV_LINKS.length - 1 ? "border-b border-gray-100" : ""}`}
                 >
                   <a
                     href={link.href}
-                    onClick={() => { setActive(link); setMenuOpen(false); }}
+                    onClick={() => { setActive(link.name); setMenuOpen(false); }}
                     className={`no-underline text-sm font-bold uppercase tracking-widest ${
                       active === link ? "text-primary" : "text-gray-800 hover:text-primary"
                     }`}
                   >
-                    {link.name}
+                    {link.label}
                   </a>
                 </li>
               ))}

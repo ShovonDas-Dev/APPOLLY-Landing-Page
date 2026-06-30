@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 
 const ReactiveTeam = () => {
-  console.log(card[1].socials);
+  
   return (
     <div className="max-w-7xl mx-auto pb-30">
       {/* Section header  */}
@@ -21,9 +21,9 @@ const ReactiveTeam = () => {
       </div>
       {/* Team member card list */}
 
-      <div className="flex flex-col pt-30 md:flex-row justify-center items-center gap-20">
+      <div className="flex flex-col  pt-30 md:flex-row justify-center items-center gap-20">
         {card.map((p) => (
-          <div key={p.id} className="">
+          <div key={p.id} className="group">
             {/* profile part */}
             <div className="flex flex-col items-center py-10 w-[320px] h-auto shadow-gray-300 shadow-xl ">
               
@@ -41,17 +41,17 @@ const ReactiveTeam = () => {
 
 
               <div className="pt-10 text-center font-my-font">
-                <h2 className="font-bold text-xl md:text-2xl text-black">
+                <h2 className="  font-bold text-xl md:text-2xl text-black">
                   {p.name}
                 </h2>
-                <h2 className="text-gray pb-5 md:text-l ">{p.position}</h2>
+                <h2 className= "group-hover:text-primary duration-300 delay-0 group-hover:font-semibold text-gray pb-5 md:text-l ">{p.position}</h2>
                 <p className="text-gray p-2">{p.description}</p>
               </div>
             
             {/* link part */}
             <div className="flex gap-5 py-4">
               {p.socials.map((icon )=>(
-                <button className="hover:text-primary text-xl pr-3 border-r last:border-0 last:p-0" key={icon} href={icon.link}>
+                <button className= "group-hover:text-primary duration-300 delay-0   hover:text-primary text-xl pr-3 border-r last:border-0 last:p-0" key={icon} href={icon.link}>
                 {icon.platform}
                 </button>
               ))}

@@ -10,8 +10,13 @@ const socialLinks = [
   { icon: <FaYoutube />, href: "#" },
 ];
 
-const quickLinks = ["About", "Features", "Screenshot", "Blog"];
-
+const quickLinks = [
+    { label: "Home",       href: "#HOME" },
+    { label: "About",      href: "#ABOUT" },
+    { label: "Features",   href: "#FEATURES" },
+    { label: "Screenshot", href: "#SCREENSHOT" },
+    { label: "Blog",       href: "#BLOG" },
+  ];
 const containerVariants = {
   hidden: {},
   visible: {
@@ -66,14 +71,14 @@ export default function Footer() {
           </h3>
           <ul className="space-y-3">
             {quickLinks.map((link) => (
-              <li key={link}>
+              <li key={link.label}>
                 <motion.a
-                  href="#"
+                  href={link.href}
                   className="text-sm transition-colors duration-200"
                   style={{ color: "#a0a0b8" }}
                   whileHover={{ color: "#ffffff", x: 4 }}
                 >
-                  {link}
+                  {link.label}
                 </motion.a>
               </li>
             ))}

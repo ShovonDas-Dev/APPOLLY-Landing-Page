@@ -15,7 +15,8 @@ const HomePage = () => {
   return (
     <>
         {/* Nav and Hero section */}
-        <section 
+        <section
+        id='HOME' 
          style={{
           backgroundImage: `url(${HeroBg})`,
           backgroundPosition: "center",
@@ -35,13 +36,15 @@ const HomePage = () => {
         </section>
         {/* About Section */}
         <section
-        id='about'
+        id='ABOUT'
         className= " py-8 lg:py-12">
         <AboutSection/>
         </section>
 
         {/* App features */}
-        <section className=" bbg-cover "
+        <section
+        id='FEATURES'
+        className=" bg-cover "
               style={{
                 backgroundImage: `url(${HeroBg})`,
                 backgroundPosition: "center",
@@ -52,7 +55,9 @@ const HomePage = () => {
         </section>
 
         {/* Checkout Our App Interface Look */}
-        <section>
+        <section
+        id='SCREENSHOT'
+        >
           <AppInterface/>
         </section>
 
@@ -79,7 +84,9 @@ const HomePage = () => {
         </section>
 
         {/* Our recent blog*/}
-        <section>
+        <section
+        id='BLOG'
+        >
               <RecentBlog/>
         </section>
 

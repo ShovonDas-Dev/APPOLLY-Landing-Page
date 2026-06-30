@@ -119,7 +119,6 @@ function CircularProgress({ percent, delay }) {
       {/* percentage number in the middle of the circle */}
       <motion.div 
       initial={{}}
-      animate={isInView ? { scale: 1, opacity: 1 } : {}}
       className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-gray-800">
         <AnimatedNumber   value={percent} decimals={0} delay={delay} /> %
       </motion.div>
