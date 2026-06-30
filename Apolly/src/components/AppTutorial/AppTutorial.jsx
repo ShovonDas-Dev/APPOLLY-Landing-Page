@@ -4,7 +4,7 @@ import SectionHeader from "../../components/SectionHeader"
 
 // Assets
 import bgPattern from "../../image/HeroBG.png"; ;
-import videoThumbnail from "../../image/VideoIMG.png";;
+import videoThumbnail from "../../image/VideoImg.png";
 
 export default function AppTutorial() {
   return (

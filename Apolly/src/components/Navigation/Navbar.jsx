@@ -3,7 +3,7 @@ import { TiSocialFacebook, TiSocialLinkedin, TiSocialTwitter, TiSocialYoutube } 
 import { motion } from "framer-motion";
 
 
-import logo from "../../image/logo.png";
+import logo from "../../image/Logo.png";
 
   const NAV_LINKS = [
     { label: "Home",       href: "#HOME" },

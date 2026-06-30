@@ -4,7 +4,7 @@ import HeroBg from "../image/HeroBG.png";
 
 import HeroSection from '../components/HeroSection/HeroSection';
 import AboutSection from '../components/AboutSection/AboutSection';
-import Appfeatures from '../components/Appfeatures/Appfeatures';
+import Appfeatures from '../components/AppFeatures/Appfeatures';
 import AppInterface from '../components/AppInterface/AppInterface';
 import AppTutorial from '../components/AppTutorial/AppTutorial';
 import ReactiveTeam from '../components/Reactive-team/ReactiveTeam';
